@@ -53,7 +53,7 @@ def alterar(v1, v2):
 def apaga(v1):
     ficheiro = herokudb()
     db = ficheiro.cursor()
-    db.execute("DELETE FROM usr WHERE nome = %s", (v1))
+    db.execute("DELETE FROM usr WHERE nome = %s", (v1,))
     ficheiro.commit()
     ficheiro.close()
 
