@@ -6,9 +6,9 @@ app = Flask(__name__)
 
 def herokudb():
     Host = 'ec2-54-75-235-28.eu-west-1.compute.amazonaws.com'
-    Database = 'd2i8vmdqr6hqck'
-    User = 'dlopinbemujdnz'
-    Password = 'c2f51674e9042bcd8985d5040cfe270542eec1ed42625e1e7fde56274000d210'
+    Database = 'dfkr444s8otoio'
+    User = 'hhynfhcuvehxxl'
+    Password = 'c66aec5bb8a0766de0ec13f575b86014d5c05e1f1e35192937ad7dcf12180799'
     return psycopg2.connect(host=Host, database=Database, user=User, password=Password, sslmode='require')
 
 
@@ -58,20 +58,20 @@ def apaga(v1):
     ficheiro.close()
 
 
-@app.route('/registo', methods=['GET', 'POST'])
-def route():
+@app.route('/registo', methods=['POST', 'GET'])
+def registo():
     erro = None
-    if request.method == 'POST':
-        v1 = request.form['utilizador']
-        v2 = request.form['email']
-        v3 = request.form['passe']
-        v4 = request.form['cpasse']
+    if request.method == "POST":
+        v1 = request.form['usr']
+        v2 = request.form['pwd']
+        v3 = request.form['cpwd']
         if existe(v1):
             erro = 'O Utilizador já existe.'
-        elif v3 != v4:
+        elif v2 != v3:
             erro = 'A palavra passe não coincide.'
         else:
             gravar(v1, v2, v3)
+            erro = 'Utilizador registado com Sucesso.'
     return render_template('registo.html', erro=erro)
 
 
@@ -126,6 +126,25 @@ def newpasse():
             alterar(v1, v2)
     return render_template('newpasse.html', erro=erro)
 
+@app.route('/sobre nós')
+def sobre():
+    return render_template('sobre.html')
+
+@app.route('/contactos')
+def contactos():
+    return render_template('contactos.html')
+
+@app.route('/voos')
+def voos():
+    return render_template('voos.html')
+
+@app.route('/hotéis')
+def hotéis():
+    return render_template('hotéis.html')
+
+@app.route('/carros')
+def carros():
+    return render_template('carros.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

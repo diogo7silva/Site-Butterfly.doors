@@ -111,3 +111,35 @@ fieldset{
 
 	margin-left: 3px;
 }
+
+.texto{
+    text-align: left !important;
+}
+
+/* Footer Media */
+
+.social{
+   font-size: 25px;
+   padding: 0px;
+}
+
+.fa-facebook {
+   background: #4842f4;
+   color: white;
+   text-align: center;
+   width: 30px;
+}
+
+.fa-youtube {
+   background: #d10a0a;
+   color: white;
+   text-align: center;
+   width: 30px;
+}
+
+.fa-instagram {
+   background: #F56040;
+   color: white;
+   text-align: center;
+   width: 30px;
+}
